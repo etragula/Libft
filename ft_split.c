@@ -64,13 +64,13 @@ static int		ft_count_letters(const char *s, char c)
 
 char			**ft_split(const char *s, char c)
 {
-	char	**bigm;
+	char		**bigm;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	if (!s || !c)
+	if (!s)
 		return (NULL);
 	if (!(bigm = (char **)malloc(sizeof(char *) * (ft_count(s, c) + 1))))
 		return (NULL);
