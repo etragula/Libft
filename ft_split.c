@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		ft_count(const char *s, char c)
+static int	ft_count(const char *s, char c)
 {
 	int	len;
 	int i;
@@ -31,7 +31,7 @@ static int		ft_count(const char *s, char c)
 	return (len);
 }
 
-static void		*ft_cleaner(char **s, int count)
+static void	*ft_cleaner(char **s, int count)
 {
 	int i;
 
@@ -45,7 +45,7 @@ static void		*ft_cleaner(char **s, int count)
 	return (NULL);
 }
 
-static int		ft_count_letters(const char *s, char c)
+static int	ft_count_letters(const char *s, char c)
 {
 	int i;
 	int length;
@@ -62,9 +62,9 @@ static int		ft_count_letters(const char *s, char c)
 	return (length);
 }
 
-char			**ft_split(const char *s, char c)
+char		**ft_split(const char *s, char c)
 {
-	char		**bigm;
+	char	**bigm;
 	int		i;
 	int		j;
 
