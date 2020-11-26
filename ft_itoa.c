@@ -22,7 +22,7 @@ static size_t	ft_how_many(int n)
 		n /= 10;
 		i++;
 	}
-	return (c < 0 ? i + 2 : i + 1);
+	return (n < 0 ? i + 2 : i + 1);
 }
 
 char			*ft_itoa(int n)
@@ -34,7 +34,7 @@ char			*ft_itoa(int n)
 
 	num = n < 0 ? n * -1 : n;
 	i = 0;
-	len = get_num_len(n);
+	len = ft_how_many(n);
 	s = (char *)malloc(sizeof(char) * (len + 1));
 	if (!s)
 		return (NULL);
