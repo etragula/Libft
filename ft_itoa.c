@@ -17,38 +17,35 @@ static size_t	ft_how_many(int n)
 	size_t i;
 
 	i = 0;
-	if (n < 0)
-		n = -n;
-	while (n /= 10)
+	while (n / 10)
+	{
+		n /= 10;
 		i++;
-	return (i + 1);
+	}
+	return (c < 0 ? i + 2 : i + 1);
 }
 
 char			*ft_itoa(int n)
 {
-	char	*str;
-	int		i;
+	unsigned int	num;
+	long int		len;
+	char			*s;
+	unsigned int	i;
 
-	i = ft_how_many(n);
-	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
+	num = n < 0 ? n * -1 : n;
+	i = 0;
+	len = get_num_len(n);
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s)
 		return (NULL);
-	str[i--] = '\0';
-	if (n == -2147483648)
-		return (str = ft_strjoin("-", "2147483648"));
 	if (n < 0)
+		s[i++] = '-';
+	s[len--] = '\0';
+	while (len >= i)
 	{
-		n = -n;
-		while (i >= 0)
-		{
-			str[i--] = (n % 10) + 48;
-			n /= 10;
-		}
-		return (str = ft_strjoin("-", str));
+		s[len] = num % 10 + '0';
+		num /= 10;
+		len--;
 	}
-	while (i >= 0)
-	{
-		str[i--] = (n % 10) + 48;
-		n /= 10;
-	}
-	return (str);
+	return (s);
 }
