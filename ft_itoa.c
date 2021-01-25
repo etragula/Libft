@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static size_t	ft_how_many(int n)
+static size_t	ft_how_many(long long int n)
 {
 	size_t i;
 
@@ -25,7 +25,7 @@ static size_t	ft_how_many(int n)
 	return (n < 0 ? i + 2 : i + 1);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long long int n)
 {
 	unsigned int	num;
 	long int		len;
