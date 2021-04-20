@@ -18,8 +18,8 @@ void	*ft_memcpy(void *s1, const void *s2, size_t n)
 	unsigned char	*idea;
 	size_t			i;
 
-	joke = (unsigned char*)s1;
-	idea = (unsigned char*)s2;
+	joke = (unsigned char *)s1;
+	idea = (unsigned char *)s2;
 	i = 0;
 	if (!n || joke == idea)
 		return (s1);

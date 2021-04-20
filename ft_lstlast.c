@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etragula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/17 16:36:06 by etragula          #+#    #+#             */
-/*   Updated: 2020/11/17 16:36:07 by etragula         ###   ########.fr       */
+/*   Created: 2021/04/20 13:29:44 by etragula          #+#    #+#             */
+/*   Updated: 2021/04/20 13:29:46 by etragula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *lit, size_t len)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	if (!lit[i])
-		return ((char *)big);
-	while (i < len && big[i])
+	while (lst)
 	{
-		if (big[i] == lit[0])
-		{
-			j = 1;
-			while (lit[j] && i + j < len)
-			{
-				if (lit[j] != big[i + j])
-					break ;
-				j++;
-			}
-			if (lit[j] == '\0')
-				return ((char *)&big[i]);
-		}
-		i++;
+		if (!lst->next)
+			return (lst);
+		lst = lst->next;
 	}
-	return (NULL);
+	return (lst);
 }

@@ -15,7 +15,7 @@
 static int	ft_count(const char *s, char c)
 {
 	int	len;
-	int i;
+	int	i;
 
 	len = 0;
 	i = 0;
@@ -33,7 +33,7 @@ static int	ft_count(const char *s, char c)
 
 static void	*ft_cleaner(char **s, int count)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < count)
@@ -47,8 +47,8 @@ static void	*ft_cleaner(char **s, int count)
 
 static int	ft_count_letters(const char *s, char c)
 {
-	int i;
-	int length;
+	int	i;
+	int	length;
 
 	i = 0;
 	length = 0;
@@ -62,7 +62,7 @@ static int	ft_count_letters(const char *s, char c)
 	return (length);
 }
 
-char		**ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**bigm;
 	int		i;
@@ -72,7 +72,8 @@ char		**ft_split(const char *s, char c)
 	j = 0;
 	if (!s)
 		return (NULL);
-	if (!(bigm = (char **)malloc(sizeof(char *) * (ft_count(s, c) + 1))))
+	bigm = (char **)malloc(sizeof(char *) * (ft_count(s, c) + 1));
+	if (!bigm)
 		return (NULL);
 	while (s[i] && j < ft_count(s, c))
 	{

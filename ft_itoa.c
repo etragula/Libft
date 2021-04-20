@@ -14,7 +14,7 @@
 
 static size_t	ft_how_many(long long int n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (n / 10)
@@ -22,17 +22,22 @@ static size_t	ft_how_many(long long int n)
 		n /= 10;
 		i++;
 	}
-	return (n < 0 ? i + 2 : i + 1);
+	if (n < 0)
+		return (i + 2);
+	else
+		return (i + 1);
 }
 
-char			*ft_itoa(long long int n)
+char	*ft_itoa(long long int n)
 {
 	unsigned int	num;
 	long int		len;
 	char			*s;
 	unsigned int	i;
 
-	num = n < 0 ? n * -1 : n;
+	num = n;
+	if (n < 0)
+		num = -1;
 	i = 0;
 	len = ft_how_many(n);
 	s = (char *)malloc(sizeof(char) * (len + 1));

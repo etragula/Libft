@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etragula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/17 16:36:06 by etragula          #+#    #+#             */
-/*   Updated: 2020/11/17 16:36:07 by etragula         ###   ########.fr       */
+/*   Created: 2021/04/20 13:29:53 by etragula          #+#    #+#             */
+/*   Updated: 2021/04/20 13:29:56 by etragula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *lit, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	size_t	j;
+	t_list	*first;
+	t_list	*new;
 
-	i = 0;
-	if (!lit[i])
-		return ((char *)big);
-	while (i < len && big[i])
+	if (!f || !del)
+		return (NULL);
+	first = NULL;
+	while (lst)
 	{
-		if (big[i] == lit[0])
+		new = ft_lstnew((*f)(lst->content));
+		if (!new)
 		{
-			j = 1;
-			while (lit[j] && i + j < len)
+			while (first)
 			{
-				if (lit[j] != big[i + j])
-					break ;
-				j++;
+				new = first->next;
+				(*del)(first->content);
+				free(first);
+				first = new;
 			}
-			if (lit[j] == '\0')
-				return ((char *)&big[i]);
+			lst = NULL;
+			return (NULL);
 		}
-		i++;
+		ft_lstadd_back(&first, new);
+		lst = lst->next;
 	}
-	return (NULL);
+	return (first);
 }

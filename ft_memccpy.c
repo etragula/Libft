@@ -19,8 +19,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t num)
 	unsigned char	stop;
 	size_t			i;
 
-	joke = (unsigned char*)dst;
-	idea = (unsigned char*)src;
+	joke = (unsigned char *)dst;
+	idea = (unsigned char *)src;
 	stop = (unsigned char)c;
 	i = 0;
 	while (num--)

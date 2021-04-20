@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, size_t num)
 {
-	unsigned char *joke;
+	unsigned char	*joke;
 
 	joke = (unsigned char *)s;
 	while (num--)

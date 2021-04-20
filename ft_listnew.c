@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_listnew.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etragula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/17 16:36:06 by etragula          #+#    #+#             */
-/*   Updated: 2020/11/17 16:36:07 by etragula         ###   ########.fr       */
+/*   Created: 2021/04/20 13:28:28 by etragula          #+#    #+#             */
+/*   Updated: 2021/04/20 13:28:35 by etragula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *lit, size_t len)
+t_list	*ft_lstnew(void *content)
 {
-	size_t	i;
-	size_t	j;
+	t_list	*new_list;
 
-	i = 0;
-	if (!lit[i])
-		return ((char *)big);
-	while (i < len && big[i])
-	{
-		if (big[i] == lit[0])
-		{
-			j = 1;
-			while (lit[j] && i + j < len)
-			{
-				if (lit[j] != big[i + j])
-					break ;
-				j++;
-			}
-			if (lit[j] == '\0')
-				return ((char *)&big[i]);
-		}
-		i++;
-	}
-	return (NULL);
+	new_list = (t_list *)malloc(sizeof(*new_list));
+	if (!new_list)
+		return (NULL);
+	new_list->content = content;
+	new_list->next = NULL;
+	return (new_list);
 }

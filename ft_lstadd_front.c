@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etragula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/17 16:36:06 by etragula          #+#    #+#             */
-/*   Updated: 2020/11/17 16:36:07 by etragula         ###   ########.fr       */
+/*   Created: 2021/04/20 13:29:08 by etragula          #+#    #+#             */
+/*   Updated: 2021/04/20 13:29:10 by etragula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *lit, size_t len)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	if (!lit[i])
-		return ((char *)big);
-	while (i < len && big[i])
+	if (lst)
 	{
-		if (big[i] == lit[0])
+		if (!new)
+			return ;
+		if (*lst)
 		{
-			j = 1;
-			while (lit[j] && i + j < len)
-			{
-				if (lit[j] != big[i + j])
-					break ;
-				j++;
-			}
-			if (lit[j] == '\0')
-				return ((char *)&big[i]);
+			new->next = *lst;
+			*lst = new;
 		}
-		i++;
 	}
-	return (NULL);
 }

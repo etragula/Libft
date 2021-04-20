@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ptr_itoa.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: etragula <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/20 13:30:52 by etragula          #+#    #+#             */
+/*   Updated: 2021/04/20 13:30:54 by etragula         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t ft_how_many(unsigned long long numb, int base)
+static size_t	ft_how_many(unsigned long long numb, int base)
 {
 	size_t	ln;
 
@@ -16,7 +27,7 @@ static size_t ft_how_many(unsigned long long numb, int base)
 	return (ln);
 }
 
-char          *ft_ptr_itoa(long long int n, int base)
+char	*ft_ptr_itoa(long long int n, int base)
 {
 	unsigned long long	nb;
 	static char			s[1024];
@@ -27,7 +38,7 @@ char          *ft_ptr_itoa(long long int n, int base)
 	nb = n;
 	ft_bzero(&s, 1024);
 	len = ft_how_many(n, 16);
-	if (nb < base)
+	if (nb < (unsigned int) base)
 	{
 		s[0] = sim[nb % base];
 		return (s);

@@ -33,7 +33,18 @@ SRC		=	ft_memset.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
-			ft_putnbr_fd.c
+			ft_putnbr_fd.c \
+			ft_ptr_itoa.c \
+			ft_listnew.c \
+			ft_lstadd_back.c \
+			ft_lstadd_front.c \
+			ft_lstclear.c \
+			ft_lstdelone.c \
+			ft_lstiter.c \
+			ft_lstlast.c \
+			ft_lstmap.c \
+			ft_lstsize.c
+
 
 OBJ		=	$(SRC:.c=.o)
 FLAGS	=	-Wall -Wextra -Werror

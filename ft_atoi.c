@@ -21,19 +21,18 @@ int	ft_atoi(char *str)
 	i = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
 		i++;
-	if (str[i] == 45)
-	{
+	if (str[i++] == 45)
 		sign *= -1;
-		i++;
-	}
 	else if (str[i] == 43)
 		i++;
 	while (str[i] >= 48 && str[i] <= 57)
 	{
 		g = g * 10 + (str[i] - 48);
 		i++;
-		if ((g > 2147483647 && sign == 1) || (g > 2147483648 && sign == -1))
-			return (sign == 1 ? -1 : 0);
+		if (g > 2147483647 && sign == 1)
+			return (-1);
+		else if (g > 2147483648 && sign == -1)
+			return (0);
 	}
 	return ((int)g * sign);
 }
